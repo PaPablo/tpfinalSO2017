@@ -1,0 +1,7 @@
+www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-getting-start
+
+https://scotch.io/tutorials/getting-started-with-docker
+
+https://docs.docker.com/get-started/
+
+
