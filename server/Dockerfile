@@ -1,4 +1,4 @@
-FROM python:3.3-onbuild
+FROM python:3.4-onbuild
  
 WORKDIR /usr/src/app
 
@@ -7,8 +7,11 @@ RUN pip install -r requirements.txt
 
 COPY . .
 
+COPY start.sh /start.sh
+
 WORKDIR /usr/src/app/tpfinalso
 
-RUN ["gunicorn", "tpfinalso.wsgi"]
+CMD ["/start.sh"]
+
 
 EXPOSE 80
