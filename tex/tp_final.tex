@@ -1,9 +1,89 @@
-\documentclass{article}
-%\usepackage{amsmath}
+\documentclass[12pt]{extarticle}
+\usepackage[spanish]{babel} 
+\usepackage[utf8]{inputenc} %Este es el paquete para que te muestre bien los caracteres latinos
+\usepackage[useregional]{datetime2} %paquete para la fecha
+\usepackage[a4paper]{geometry} %paquete para el tamaño de hoja
+\usepackage{changepage} %paquete para cambiar los márgenes a una sola parte del documento con \begin{adjustwidth} y \end{adjustwidth}
+%\usepackage{tgbonum}
+%\usepackage{tgheros} %paquete para la fuente, cambiar a gusto
+%\usepackage{tgschola}
+%\usepackage{fourier}
+%\usepackage{sans}
+%\usepackage{utopia}
+%\usepackage{lmodern}
+\usepackage{palatino}
+\usepackage{fancyhdr} %para los estilos de hoja, también para los l-rhead, l-rfoot
+\usepackage{subcaption}
+\usepackage[pdftex]{graphicx} %paquete para las imágenes
+\graphicspath{ {images/} }
+
+%\usepackage[final]{pdfpages}
+%paquete para incorporar pdfs
+
+
+
+
+\newcommand{\fecha}{\today}
+
+
+%\lstinputlisting permite poner un archivo entero para que lo muestre
+%\begin{lstlisting} y \end{lstlisting} te permite tirarle el código ahí en el medio
+
 \begin{document}
-    Hello, world!
+
+
+    \begin{titlepage}
+
+        \begin{center}
+            \includegraphics{logoUnpsjb.png}
+            \linebreak
+            \begin{huge}
+                Sistemas Operativos \\ Trabajo Práctico Final \\ Docker\\
+            \end{huge}
+            \vspace*{10mm}
+            \rule{10cm}{0.1mm}\\
+            \vspace*{3mm}
+            \begin{LARGE}
+                Cátedra:\\
+                \textbf{Profesor:} Lic. Marcelo Gómez\\
+                \vspace*{5mm}
+                \textbf{Ayudantes de cátedra:}\\ Lic. Lucy Marticorena\\APU Leandro Luque\\
+            \end{LARGE}
+            \vspace*{3mm}
+            \rule{10cm}{0.1mm}\\
+            \vspace*{10mm}
+            \begin{LARGE}
+                Alumnos:\\
+                SERRUYA ALOISI, Luciano\\
+                TOLEDO MARGALEF, Pablo\\
+            \end{LARGE}
+            \vspace*{5mm}
+            \Large\fecha
+    \end{center}
+
+    \end{titlepage}
+
+    \clearpage
+    \pagestyle{fancy}
+    \cfoot{}
+    \lhead{TP Final - Docker}
+    \rhead{\includegraphics[scale=0.2]{logoUnpsjb.png}}
+    \lfoot{\thepage}
+    \rfoot{Luciano Serruya Aloisi, Pablo Toledo Margalef}
+
+    \section{eeeehhhh}
+    docker es esteeee coso, viste queeeeeeee
+    está repiola
+
+
 
 \end{document}
 
-%\multicolumn{n}{cols}{text}
-%A cell that spans n columns, with cols column specification.
+
+
+This text will not show up in the output.
+\begin{lstlisting}
+        
+\textgreater    %>
+\textless       %<
+\textbar        %|
