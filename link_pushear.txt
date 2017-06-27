@@ -1,0 +1,39 @@
+https://docs.docker.com/get-started/part2/#share-your-image
+
+en ese link se explica como taguear la imagen y pushearla a un repo en DockerHub
+
+básicamente la onda es así
+
+   
+    primero vamos a tener que armar nuestra imagen. Si ya tenemos el Dockerfile, hacemos:
+        docker build -t <nombre_imagen> .
+        (el -t es de "tag")
+   
+    después nos logueamos con nuestra cuenta de DockerHub
+       docker login
+
+    ahora tagueamos nuestra imagen en el repo que tengamos (no sé si habrá que tener creado el repo previamente, o lo te lo crea ahí nomas)
+        docker tag <nombre_imagen> <nombre_usuario>/<nombre_repo>:<nombre_version>
+
+    por ejemplo, usando la imagen "web"
+        docker tag web lucianofromtrelew/repo_SO:prueba
+
+
+    ahora falta pushear al repo remoto
+        docker push <nombre_usuario>/<nombre_repositorio>:<nombre_version>
+
+    una vez que lo tengamos en el repo remoto, no hace falta "pullear" como si fuera en GitHub y después correrlo, sino que directamente
+    le decimos que corra un contenedor que está en un repositorio remoto y ahí te lo pullea y toda la bola
+
+        Si previamente hicimos:
+            docker push lucianofromtrelew/repo_SO:prueba
+
+        cualquiera que quiera correr esa imagen, va a tener que hacer:
+            docker run lucianofromtrelew/repo_SO:prueba
+            (si se omite el ":prueba", el docker run asume la versió ":latest")
+
+        
+
+
+
+
