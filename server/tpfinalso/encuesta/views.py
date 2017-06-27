@@ -6,7 +6,8 @@ import json
 # Create your views here.
 
 def index(request):
-    return HttpResponse("Guada re crack, el año que viene va a tener BD 1 con Vale <3")
+    #return HttpResponse("Guada re crack, el año que viene va a tener BD 1 con Vale <3")
+    return HttpResponse("ahre loco todo")
 
 def preguntaID(request,preg):
     try:
