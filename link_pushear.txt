@@ -22,8 +22,7 @@ básicamente la onda es así
     ahora falta pushear al repo remoto
         docker push <nombre_usuario>/<nombre_repositorio>:<nombre_version>
 
-    una vez que lo tengamos en el repo remoto, no hace falta "pullear" como si fuera en GitHub y después correrlo, sino que directamente
-    le decimos que corra un contenedor que está en un repositorio remoto y ahí te lo pullea y toda la bola
+    una vez que lo tengamos en el repo remoto, se puede pullear la imagen o directamente correrla y ahí mismo te la descarga
 
         Si previamente hicimos:
             docker push lucianofromtrelew/repo_SO:prueba
@@ -32,8 +31,12 @@ básicamente la onda es así
             docker run lucianofromtrelew/repo_SO:prueba
             (si se omite el ":prueba", el docker run asume la versió ":latest")
 
-        
+        para pullear la imagen:
+            docker pull lucianofromtrelew/repo_SO:prueba
 
+        si se pullea la imagen, después aparecerá en las imágenes que uno tiene disponible haciendo:
+            docker images
+            
+            también se puede hacer
 
-
-
+            docker image ls
