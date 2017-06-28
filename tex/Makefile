@@ -1,6 +1,6 @@
 SRC=tp_final
 
-all: pdf bib 2pdf
+all: pdf bib pdf pdf
 
 pdf: 
 	pdflatex $(SRC)
