@@ -1,4 +1,4 @@
-\documentclass[12pt]{extarticle}
+\documentclass[14pt]{extarticle}
 \usepackage[spanish]{babel} 
 \usepackage[utf8]{inputenc} %Este es el paquete para que te muestre bien los caracteres latinos
 \usepackage[useregional]{datetime2} %paquete para la fecha
@@ -10,8 +10,8 @@
 %\usepackage{fourier}
 %\usepackage{sans}
 %\usepackage{utopia}
-%\usepackage{lmodern}
-\usepackage{palatino}
+\usepackage{lmodern}
+%\usepackage{palatino}
 \usepackage{fancyhdr} %para los estilos de hoja, también para los l-rhead, l-rfoot
 \usepackage{subcaption}
 \usepackage[pdftex]{graphicx} %paquete para las imágenes
@@ -25,10 +25,8 @@
 
 
 \newcommand{\fecha}{\today}
+\newcommand{\docker}{Docker\copyright}
 
-
-%\lstinputlisting permite poner un archivo entero para que lo muestre
-%\begin{lstlisting} y \end{lstlisting} te permite tirarle el código ahí en el medio
 
 \begin{document}
 
@@ -39,25 +37,25 @@
             \includegraphics{logoUnpsjb.png}
             \linebreak
             \begin{huge}
-                Sistemas Operativos \\ Trabajo Práctico Final \\ Docker\\
+                Sistemas Operativos \\ Trabajo Práctico Final \\ \docker{}\\
             \end{huge}
-            \vspace*{10mm}
+            \vspace*{5mm}
             \rule{10cm}{0.1mm}\\
             \vspace*{3mm}
-            \begin{LARGE}
+            \begin{Large}
                 Cátedra:\\
                 \textbf{Profesor:} Lic. Marcelo Gómez\\
                 \vspace*{5mm}
                 \textbf{Ayudantes de cátedra:}\\ Lic. Lucy Marticorena\\APU Leandro Luque\\
-            \end{LARGE}
+            \end{Large}
             \vspace*{3mm}
             \rule{10cm}{0.1mm}\\
-            \vspace*{10mm}
-            \begin{LARGE}
+            \vspace*{5mm}
+            \begin{large}
                 Alumnos:\\
                 SERRUYA ALOISI, Luciano\\
                 TOLEDO MARGALEF, Pablo\\
-            \end{LARGE}
+            \end{large}
             \vspace*{5mm}
             \Large\fecha
     \end{center}
@@ -72,22 +70,35 @@
     \lfoot{\thepage}
     \rfoot{Luciano Serruya Aloisi, Pablo Toledo Margalef}
 
-    \section{eeeehhhh}
+    \clearpage
+    \tableofcontents
+    \clearpage
+
+    \section{Introducción}
+    \subsection{Plataformas de contenedores}
+    \subsection{Máquinas virtuales}
     docker es esteeee coso, viste queeeeeeee
     está repiola
 
+    acá hablar sobre qué es la virtualización (?)
+    también hablar sobre las plataformas de contenedores
+    y máquinas virtuales
+
+    \clearpage
+    \section{¿Qué es \docker{}?}
+    \subsection{¿Qué \textbf{NO} es \docker{}?}
+    \subsection{Arquitectura}
+
+    \clearpage
+    \section{Ventajas y desventajas}
+
+
+    \clearpage
+    \section{Ejemplo práctico}
 
 
     \clearpage
     \bibliographystyle{plainnat}
     \bibliography{doc}
+
 \end{document}
-
-
-
-This text will not show up in the output.
-\begin{lstlisting}
-        
-\textgreater    %>
-\textless       %<
-\textbar        %|

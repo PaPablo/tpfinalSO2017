@@ -3,7 +3,7 @@ Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: tp_final.aux
 The style file: plainnat.bst
 I couldn't open database file doc.bib
----line 12 of file tp_final.aux
+---line 19 of file tp_final.aux
  : \bibdata{doc
  :             }
 I'm skipping whatever remains of this command
