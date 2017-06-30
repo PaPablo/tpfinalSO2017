@@ -1,0 +1,14 @@
+desventaja en contenedores: seguridad
+    http://www.itworld.com/article/2915530/virtualization/containers-vs-virtual-machines-how-to-tell-which-is-the-right-choice-for-your-enterprise.html
+    http://www.itworld.com/article/2920349/security/for-containers-security-is-problem-1.html
+    http://containerjournal.com/2015/06/05/linux-containers-security-implications/
+    https://opensource.com/business/14/7/docker-security-selinux
+
+hype de docker:
+    https://robhirschfeld.com/2014/04/18/docker-real-or-hype/
+
+alcance de los contenedores y las VM
+    http://www.networkcomputing.com/cloud-infrastructure/virtual-machines-vs-containers-matter-scope/2039932943
+
+contenedores vs VM
+    http://www.itworld.com/article/2910543/will-containers-kill-the-virtual-machine.html
