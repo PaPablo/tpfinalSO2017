@@ -1,9 +1,9 @@
 \select@language {spanish}
-\contentsline {section}{\numberline {1}Introducci\IeC {\'o}n}{2}
-\contentsline {subsection}{\numberline {1.1}Plataformas de contenedores}{2}
-\contentsline {subsection}{\numberline {1.2}M\IeC {\'a}quinas virtuales}{2}
-\contentsline {section}{\numberline {2}\IeC {\textquestiondown }Qu\IeC {\'e} es Docker\copyright {}?}{3}
-\contentsline {subsection}{\numberline {2.1}\IeC {\textquestiondown }Qu\IeC {\'e} \textbf {NO} es Docker\copyright {}?}{3}
-\contentsline {subsection}{\numberline {2.2}Arquitectura}{3}
-\contentsline {section}{\numberline {3}Ventajas y desventajas}{4}
-\contentsline {section}{\numberline {4}Ejemplo pr\IeC {\'a}ctico}{5}
+\contentsline {section}{\numberline {1}Introducci\IeC {\'o}n}{2}{section.1}
+\contentsline {subsection}{\numberline {1.1}M\IeC {\'a}quinas virtuales}{3}{subsection.1.1}
+\contentsline {subsection}{\numberline {1.2}Plataformas de contenedores}{4}{subsection.1.2}
+\contentsline {section}{\numberline {2}\IeC {\textquestiondown }Qu\IeC {\'e} es Docker\copyright {}?}{7}{section.2}
+\contentsline {subsection}{\numberline {2.1}\IeC {\textquestiondown }Qu\IeC {\'e} \textbf {NO} es Docker\copyright {}?}{7}{subsection.2.1}
+\contentsline {subsection}{\numberline {2.2}Arquitectura}{7}{subsection.2.2}
+\contentsline {section}{\numberline {3}Ventajas y desventajas}{8}{section.3}
+\contentsline {section}{\numberline {4}Ejemplo pr\IeC {\'a}ctico}{9}{section.4}
