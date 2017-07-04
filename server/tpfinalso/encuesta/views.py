@@ -1,8 +1,9 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from django.core import serializers
-from encuesta.models import Question
+from encuesta.models import Question,Choice
 import json
+
 # Create your views here.
 
 def index(request):
@@ -13,13 +14,16 @@ def preguntaID(request,preg):
     try:
         q = serializers.serialize("json",[Question.objects.get(pk=preg)])
     except Question.DoesNotExist:
-        q= "no existe"
-    return HttpResponse(q)
+        return HttpResponse("No existe la pregunta")
+    return HttpResponse(q, content_type='application/json')
 
 def preguntaAll(request):
-    q = serializers.serialize("json",Question.objects.all())
-    r = [j for j in json.loads(q)]
-    t = '<p/>'.join(str(a) for a in r)
-    
-    return HttpResponse(t)
+    preguntas = serializers.serialize("json", Question.objects.all())
+
+    return HttpResponse(preguntas, content_type='application/json')
+
+def opcionesPorPregunta(request, preg):
+    q = serializers.serialize("json", Choice.objects.filter(question=preg))
+
+    return HttpResponse(q, content_type='application/json')
 
