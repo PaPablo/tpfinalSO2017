@@ -8,7 +8,7 @@ import json
 
 def index(request):
     #return HttpResponse("Guada re crack, el año que viene va a tener BD 1 con Vale <3")
-    return HttpResponse("asdas")
+    return HttpResponse("Hola como va")
 
 def preguntaID(request,preg):
     try:

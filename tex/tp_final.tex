@@ -12,6 +12,13 @@
 \usepackage[pdftex]{graphicx} %paquete para las imágenes
 \usepackage[numbers]{natbib}
 \graphicspath{ {images/} }
+
+
+
+\usepackage{listings}
+\lstset{basicstyle=\footnotesize\ttfamily,breaklines=true}
+\lstset{framextopmargin=60pt}
+
 %\usepackage[final]{pdfpages}
 %paquete para incorporar pdfs
 
@@ -215,7 +222,122 @@
     \clearpage
     \section{Ejemplo práctico}
 
+    Para el ejemplo práctico del presente trabajamos decidimos mostrar las bondades de Docker\copyright{} creando dos imágenes, una con una aplicación en Django\copyright{} y otra imagen de Postgres\copyright{}. Luego, con las dos imágenes ya contruidas, pondremos a correr un contenedor de cada imagen. 
 
+    En este ejemplo utilizaremos también una herramienta que nos proporciona Docker\copyright{} llamada Docker Compose\copyright{}, la cual nos permite levantar a la vez más de una imagen en contenedores separados y arma entre estos una red local.
+
+    A continuación el Dockerfile correspondiente a la apliación en Django\copyright{}:\\
+
+
+    \begin{lstlisting}
+    # Imagen base a partir de la cual armamos la nuestra
+    FROM python:3.4-onbuild
+    
+    # Nos posicionamos en un directorio dentro del contenedor
+    WORKDIR /usr/src/app
+
+    # Copiamos un archivo local hacia dentro del contenedor
+    # Notar la notacion 
+    # COMANDO <ruta local > < ruta dentro del contenedor >
+    # Las rutas locales y dentro del contenedor pueden ser tanto absolutas
+    # como relativas
+    COPY requirements.txt ./
+
+    # corremos un comando dentro del contenedor
+    RUN pip install -r requirements.txt
+
+    # Copiamos todo lo que esta en el directorio actual
+    # al contenedor en su pwd actual
+    COPY . .
+
+    COPY start.sh /start.sh
+
+    # Cambia el pwd dentro del contenedor
+    WORKDIR /usr/src/app/tpfinalso
+
+    # El comando entre los [] se ejecutara 
+    # una vez que el contenedor
+    # se encuentre levantado, a esto se le llama "entry point"
+    CMD ["/start.sh"]
+
+
+    EXPOSE 80
+    \end{lstlisting}
+
+    Como vemos el Dockerfile crea la imagen con todo lo necesario para poder levantar nuestra aplicación.
+    Luego debemos crear la imagen para nuestra Base de Datos, para lo cual creamos la imagen con el siguiente Dockerfile
+
+    \begin{lstlisting}
+        FROM postgres:9.6
+    \end{lstlisting}
+
+    Ya con las dos imágenes diseñadas podemos crear nuestro archivo de configuración de Docker Compose\copyright{} llamado docker-compose.yml. Por defecto docker-compose (el comando utilizado para construir aplicaciones de Compose) buscará un docker-compose.yml para realizar la construcción.\\
+    En nuestro caso creamos el siguiente docker-compose.yml
+    \\
+    \begin{lstlisting}
+        # version necesaria, nos dice cuales comandos 
+        # y de que forma se deben usar
+        version: '2'
+
+        # Docker Compose le llama a cada contenedor el grupo, servicio
+        services:
+            # Servicio con la base de datos
+            db:
+                # Ubicacion del Dockerfile
+                build: ./datos
+                # En caso de cierre debe reiniciar el contendor
+                restart: always
+                # Mapea el puerto 5432 del contenedor al 5434 de la maquina local
+                ports:
+                    - "5434:5432"
+                # Creacion de volumenes compartidos entre
+                # la maquina local y el contenedor
+                volumes:
+                    - ./.pgdata:/var/lib/postgresql/data/
+
+            # Servicio que aloja la aplicacion
+            web:
+                restart: always
+                build: ./server
+                ports:
+                    - "4000:80"
+                volumes:
+                    - ./server/tpfinalso:/usr/src/app/tpfinalso
+                depends_on:
+                    - db
+    \end{lstlisting}
+    Contando con nuestro docker-compose.yml con la información de los servicios que queremos levantar ejecutamos
+
+    \begin{lstlisting}
+    $ sudo docker-compose build
+    $ sudo docker-compose up
+    \end{lstlisting}
+
+    Con esos dos comandos le pedimos al compose que se construya a partir de las info proporcionada en el docker-compose y que comience a correr. En nuestro equipo el build y el up arroja el siguiente resultado en pantalla. Dispondremos sólo de un trozo porque es demasiado para que realmente queremos mostrar: \\
+    \begin{lstlisting}
+    db_1   | LOG:  database system was shut down at 2017-07-04 13:30:51 UTC
+    db_1   | LOG:  MultiXact member wraparound protections are now enabled
+    db_1   | LOG:  database system is ready to accept connections
+    web_1  | Starting Gunicorn
+    db_1   | LOG:  autovacuum launcher started
+    web_1  | db.sqlite3
+    db_1   | LOG:  received smart shutdown request
+    web_1  | encuesta
+    db_1   | LOG:  autovacuum launcher shutting down
+    web_1  | encuesta.backup
+    db_1   | LOG:  shutting down
+    web_1  | index.html
+    db_1   | LOG:  database system is shut down
+    web_1  | manage.py
+    db_1   | LOG:  database system was shut down at 2017-07-04 16:04:17 UTC
+    db_1   | LOG:  MultiXact member wraparound protections are now enabled
+    db_1   | LOG:  database system is ready to accept connections
+    \end{lstlisting}
+
+    
+    Como se puede observar el sistema se encuentra corriendo a partir de los dos contenedores y se establece una comunicación entre ellos. Aún así no todo es color de rosa. Al momento de configurar la imagen de la base de datos en importante agregar un volumen entre la máquina y el contenedor para resguardar la información dentro del contenedor, puede este vuelve al estado que estaba luego de haberse construído por primera vez
+\\
+    Contando con nuestros contenedores corriendo y habiendo configurado correctamente la conexión de la BD con la aplicación tendremos una aplicación aislada del ambiente que contenga los contenedores y la podremos poner a funcionar en otro equipo y no habrá problemas de compatibilidad.
     \clearpage
     \bibliographystyle{plainnat}
     \bibliography{tp_final}
