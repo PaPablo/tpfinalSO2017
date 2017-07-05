@@ -183,9 +183,34 @@
         \subsubsection*{Ventajas}
         Como ya se fue diciendo a lo largo de este trabajo, tanto \docker{} como las plataformas de contenedores en general ofrecen varias ventajas sobre las máquinas virtuales u otras técnicas de virtualización. La principal de ellas es que los contenedores son más \textbf{livianos} que las máquinas virtuales, permitiendo así poder crear varios a la vez y ejecutarlos en simultáneo. También brinda grandes posibilidades de abstracción de la aplicación a correr, logrando tener distintos contenedores, aislados entre sí, pero que entre todos ofrecen la posibilidad de montar una aplicación.
 
+        \begin{figure}[h]
+            \centering
+            \includegraphics[scale=0.65]{docker-stages.png}
+            \caption{Interacción entre los distintos elementos de la arquitectura de \docker{}\cite{stages}}
+        \end{figure}
+
         La \textit{API} que ofrece \docker{} también es muy sencilla, siendo muy intuitivo si ya se cuenta con experiencia en otras herramientas como \textit{Git}
 
         Una de las ventajas más importantes que brinda \docker{} que no se debe dejar de lado es la facilidad con la cual los desarrolladores pueden mover su aplicación entre distintos servidores que corran la plataforma, manteniendo así la independencia del hardware.
+
+        
+        \subsubsection*{Desventajas}
+        Más allá de los distintos beneficios y nuevas posibilidades que brindan los contenedores frente a las máquinas virtuales, esta técnica de virtualización también se enfrenta con varias dificultades, siendo uno de los mayores problemas la \textbf{incompatibilidad entre distintos sistemas operativos} y la \textbf{seguridad}.
+
+        Como los contenedores se basan en el sistema operativo anfitrión, utilizan su mismo filesystem para los distintos contenedores que corra la plataforma. Este aspecto es uno de los que brinda las mayores ventajas, ya que es el que evita tener que virtualizar todo el hardware. Sin embargo, imposibilita correr una imagen de un sistema operativo que utilice un filesystem distinto al del sistema operativo anfitrión. Por ejemplo, no se puede correr una imagen de un sistema operativo Linux (ext4) en una máquina con Windows (NTFS).
+        Con respecto a los problemas con la seguridad, vienen dados por una situación: \textbf{el demonio de \docker{} siempre corre con privilegios de superusuario}. Según la documentación oficial de la herramienta \cite{docs}, esto sucede porque el proceso demonio se conecta con un socket Unix en vez de con un socket TCP. Por defecto dicho socket Unix es propiedad del usuario \textit{root}. Además, los procesos dentro de los contenedores se ejecutan, por defecto, con permisos de superusuario.
+
+        Estas dos características que tiene por defecto \docker{} pueden ser problemáticas al momento de que el proceso con permisos de superusuario del contenedor se comunique con el kérnel (que es el mismo kérnel de la máquina anfitrión, porque comparte el sistema operativo).  
+
+        Una regla básica que se intenta mantener es la de \textit{tratar a los contenedores del mismo modo que se trataría a cualquier servidor de aplicación}. Esto significa:
+        \begin{enumerate}
+            \item Remover privilegios cuanto antes
+            \item Correr los servicios del contenedor sin permisos de superusuario siempre que sea posible
+            \item Tratar al usuario \textit{root} del contenedor como si fuera el usuario \textit{root} de la máquina anfitrión \cite{walsh}
+        \end{enumerate}
+
+
+
 
     \clearpage
     \section{Ejemplo práctico}

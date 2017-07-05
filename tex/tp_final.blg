@@ -5,47 +5,49 @@ The style file: plainnat.bst
 Database file #1: tp_final.bib
 Warning--to sort, need author or key in redhat
 Warning--to sort, need author or key in docker
+Warning--to sort, need author or key in docs
 Warning--empty year in docker
+Warning--empty year in docs
 Warning--empty year in redhat
-You've used 6 entries,
+You've used 9 entries,
             2773 wiz_defined-function locations,
-            614 strings with 5569 characters,
-and the built_in function-call counts, 1685 in all, are:
-= -- 144
-> -- 40
-< -- 4
-+ -- 18
-- -- 12
-* -- 102
-:= -- 222
-add.period$ -- 14
-call.type$ -- 6
-change.case$ -- 20
-chr.to.int$ -- 6
-cite$ -- 18
-duplicate$ -- 90
-empty$ -- 199
-format.name$ -- 16
-if$ -- 369
-int.to.chr$ -- 1
+            623 strings with 5795 characters,
+and the built_in function-call counts, 2533 in all, are:
+= -- 220
+> -- 60
+< -- 6
++ -- 28
+- -- 18
+* -- 156
+:= -- 334
+add.period$ -- 23
+call.type$ -- 9
+change.case$ -- 30
+chr.to.int$ -- 8
+cite$ -- 27
+duplicate$ -- 135
+empty$ -- 298
+format.name$ -- 24
+if$ -- 557
+int.to.chr$ -- 2
 int.to.str$ -- 1
 missing$ -- 0
-newline$ -- 34
-num.names$ -- 16
-pop$ -- 74
+newline$ -- 49
+num.names$ -- 24
+pop$ -- 109
 preamble$ -- 1
-purify$ -- 16
+purify$ -- 24
 quote$ -- 0
-skip$ -- 87
+skip$ -- 125
 stack$ -- 0
-substring$ -- 14
-swap$ -- 10
+substring$ -- 21
+swap$ -- 17
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 66
-warning$ -- 4
-while$ -- 12
+type$ -- 99
+warning$ -- 6
+while$ -- 18
 width$ -- 0
-write$ -- 69
-(There were 4 warnings)
+write$ -- 104
+(There were 6 warnings)
