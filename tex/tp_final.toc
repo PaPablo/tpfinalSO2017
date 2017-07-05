@@ -3,7 +3,7 @@
 \contentsline {subsection}{\numberline {1.1}M\IeC {\'a}quinas virtuales}{3}{subsection.1.1}
 \contentsline {subsection}{\numberline {1.2}Plataformas de contenedores}{4}{subsection.1.2}
 \contentsline {section}{\numberline {2}\IeC {\textquestiondown }Qu\IeC {\'e} es Docker\copyright {}?}{7}{section.2}
-\contentsline {subsection}{\numberline {2.1}\IeC {\textquestiondown }Qu\IeC {\'e} \textbf {NO} es Docker\copyright {}?}{7}{subsection.2.1}
-\contentsline {subsection}{\numberline {2.2}Arquitectura}{7}{subsection.2.2}
-\contentsline {section}{\numberline {3}Ventajas y desventajas}{8}{section.3}
-\contentsline {section}{\numberline {4}Ejemplo pr\IeC {\'a}ctico}{9}{section.4}
+\contentsline {subsection}{\numberline {2.1}\IeC {\textquestiondown }Qu\IeC {\'e} \textbf {NO} es Docker\copyright {}?}{8}{subsection.2.1}
+\contentsline {subsection}{\numberline {2.2}Arquitectura}{8}{subsection.2.2}
+\contentsline {section}{\numberline {3}Ventajas y desventajas}{10}{section.3}
+\contentsline {section}{\numberline {4}Ejemplo pr\IeC {\'a}ctico}{11}{section.4}

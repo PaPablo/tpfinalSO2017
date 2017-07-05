@@ -12,4 +12,4 @@ bib:
 	pdflatex $(SRC) && pdflatex $(SRC)
 
 clean: 
-	rm *.aux *.log *.out *.dvi *.toc *.bbl *.blg
+	rm *.aux *.log *.out *.dvi *.toc *.bbl *.blg *.bcf *.run*

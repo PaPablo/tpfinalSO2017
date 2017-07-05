@@ -123,21 +123,69 @@
 
         Al ser los contenedores mucho más livianos que las máquinas virtuales (no tienen que correr una instancia del sistema operativo, sólo la aplicación para la cual fueron diseñados), permiten elevar más el nivel de abstracción, logrando tener un contenedor altamente específico para correr una aplicación en particular.  Como práctica general, se mantiene el concepto de tener \textbf{un proceso por contenedor}.
 
-        Por otro lado, las máquinas virtuales tienen un alcance mucho más amplio, permitiendo correr sistemas operativos enteros.  
+        Las máquinas virtuales tienen un alcance mucho más amplio, permitiendo correr sistemas operativos enteros.  
 
 
     \clearpage
+    \pagebreak
     \section{¿Qué es \docker{}?}
+
+
+        \docker{} es una plataforma de contenedores de código abierto creada en el 2013. La premisa de la empresa es que la herramienta que ellos proveen está destinada a eliminar el problema de ``Funciona en mi computadora''\cite{docker}, al empaquetar el ambiente de ejecución de la aplicación en un contenedor (o imagen) y transportar esa imagen de un servidor a otro.
+
+
+        \begin{figure}[h]
+            \centering
+            \includegraphics[scale=0.30]{docker-logo.png}
+            \caption{Logo de \docker{} - los contenedores que transportan mercadería en barcos representan el mismo concepto de estandarización que los contenedores \docker{}}
+        \end{figure}
+
+        \docker{} también permite \textbf{apilar} los contenedores, logrando armar el deseado para la aplicación a correr en base a una construcción de distintos contenedores previamente definidos. También permite hacer un gestionado de versiones de las distintas imágenes que se pueden crear, pudiendo así revertir cambios hechos a una imagen.
         
-    \subsection{¿Qué \textbf{NO} es \docker{}?}
+        \subsubsection*{\docker{} es como la \textit{JVM}}
+            \begin{quote}
+                Promesa de Java: \textit{Escribir una vez. Ejecutar en todos lados.}
+            \end{quote}
+
+            En vez del código el que debe ser escrito una vez y poder ser ejecutado en todos lados, las plataformas de contenedores plantean una solución similar pero del lado de la configuración del servidor. Con los contenedores, los desarrolladores pueden tener la confianza que su plantilla de servidor correrá igual en todos los anfitriones donde se ejecute una plataforma de contenedores.\cite{ctl}
+
+        \subsubsection*{\docker{} es como \textit{Git}}
+            \begin{quote}
+                Promesa de Git: \textit{Huellas minúsculas con rendimiento veloz.}
+            \end{quote}
+
+            Como se decía anteriormente, \docker{} permite hacer un seguimiento de las distintas versiones por las que pasó una imagen (en vez de seguir el código, como hace \textit{Git}).\cite{ctl}
+
+        \subsection{¿Qué \textbf{NO} es \docker{}?}
+        A primera vista, \docker{} se puede pensar como ``máquinas virtuales livianas''. Este concepto no es acertado, debido a que, como se explicó anteriormente, las máquinas virtuales difieren de las plataformas de contenedores en su forma de abstraer los recursos y de presentar esa abstracción al usuario.
+
+        \begin{enumerate}
+            \item \docker{} no es una tecnología de contenedores Linux (como LXC).
+            \item \docker{} no es un reemplazo para un administrador de configuraciones (como pueden ser Chef, Pupper, SaltStack).
+            \item \docker{} no es una \textit{Plataforma como Servicio} (PaaS).\cite{ctl}
+        \end{enumerate}
     \subsection{Arquitectura}
+        La plataforma \docker{} emplea los siguientes conceptos para describir su funcionamiento y arquitectura: 
 
-
-    hablar sobre lo que dice el informe, también hablar sobre registry (permite armar un repo local, y los clientes pueden descargar de ahí)
+        \begin{enumerate}
+            \item \textbf{Imagen}: definición o plantilla del servidor el cual se virtualizará. Se definen qué dependencias debe tener la imagen.
+            \item \textbf{Contenedor}: instancia de una imagen. Un contenedor corre una imagen en particular.
+            \item \textbf{\docker{} Daemon}: procesos que corre en segundo plano y se encarga de administrar los distintos contenedores que se encuentren corriendo en un momento dado.
+            \item \textbf{Dockerfile}: archivo que define la configuración que va a tener una imagen. Emplea una sintaxis específica para su escritura
+            \item \textbf{\docker{} Compose}: herramienta que permite definir y correr simultáneamente varios contenedores. También permite crear un archivo de configuración para definir qué imágenes correr.
+            \item \textbf{Local Registry}: repositorio en una red local de la cual los distintos clientes podrán descargar las imágenes que éste publica.
+            \item \textbf{DockerHub}: sitio web que permite subir los repositorios de imágenes y de esta manera se pueden compartir entre distintos usuarios de manera globa.
+        \end{enumerate}
+        
 
     \clearpage
     \section{Ventajas y desventajas}
+        \subsubsection*{Ventajas}
+        Como ya se fue diciendo a lo largo de este trabajo, tanto \docker{} como las plataformas de contenedores en general ofrecen varias ventajas sobre las máquinas virtuales u otras técnicas de virtualización. La principal de ellas es que los contenedores son más \textbf{livianos} que las máquinas virtuales, permitiendo así poder crear varios a la vez y ejecutarlos en simultáneo. También brinda grandes posibilidades de abstracción de la aplicación a correr, logrando tener distintos contenedores, aislados entre sí, pero que entre todos ofrecen la posibilidad de montar una aplicación.
 
+        La \textit{API} que ofrece \docker{} también es muy sencilla, siendo muy intuitivo si ya se cuenta con experiencia en otras herramientas como \textit{Git}
+
+        Una de las ventajas más importantes que brinda \docker{} que no se debe dejar de lado es la facilidad con la cual los desarrolladores pueden mover su aplicación entre distintos servidores que corran la plataforma, manteniendo así la independencia del hardware.
 
     \clearpage
     \section{Ejemplo práctico}

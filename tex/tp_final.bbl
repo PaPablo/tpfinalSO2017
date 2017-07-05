@@ -1,12 +1,21 @@
-\begin{thebibliography}{4}
+\begin{thebibliography}{6}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
   \providecommand{\doi}[1]{doi: #1}\else
   \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
 
+\bibitem[doc()]{docker}
+URL \url{https://www.docker.com/}.
+
 \bibitem[red()]{redhat}
 URL \url{https://www.redhat.com/es/topics/virtualization}.
+
+\bibitem[Carlson(2014)]{ctl}
+Lucas Carlson.
+\newblock What is docker and when to use it, April 2014.
+\newblock URL
+  \url{https://www.ctl.io/developers/blog/post/what-is-docker-and-when-to-use-it/}.
 
 \bibitem[Lowe(2014)]{cloudinfrastructure}
 Scott Lowe.
